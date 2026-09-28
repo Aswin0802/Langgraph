@@ -1,0 +1,6 @@
+If we use the same implementation pattern as in a sequential workflow, what issues could arise in a parallel workflow?
+
+In a parallel workflow, multiple nodes execute concurrently and may attempt to update the shared state at the same time. If each Python function returns the entire state rather than only the specific fields it modifies, multiple nodes may overwrite each other’s updates, resulting in state conflicts, race conditions, or unintended data loss.
+
+Therefore, in a parallel workflow, each node should ideally return only the state fields that it is responsible for updating.
+
