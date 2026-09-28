@@ -1,0 +1,12 @@
+Using the same thread_id preserves the conversation's previous chat_history, allowing the chat to continue from the existing memory. Using a different thread_id creates a separate conversation context, so the previous chat history is not available
+
+The same thread_ids will keep the memory of the old chat_history and with different thread_ids the memory will be lost
+
+Steps to setup Persistence in chatbot:-
+Import the required checkpointer for storing graph state.
+create an object of that checkpointer.
+Pass the checkpointer when compiling the graph.
+Create a configuration dictionary containing a thread_id.
+Pass the configuration when invoking the graph.
+Reuse the same thread_id to continue the existing conversation; use a different thread_id to start a separate conversation.
+

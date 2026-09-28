@@ -1,0 +1,3 @@
+the model starts sending tokens one at a time as soon as they are generated instead of waiting for the entire response.
+
+https://docs.langchain.com/oss/python/langgraph/streaming 
