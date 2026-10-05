@@ -1,0 +1,15 @@
+langchain
+langchain-core
+langchain-community
+langgraph
+streamlit
+langchain-groq
+langchain-openai
+python-dotenv
+ipykernel
+pydantic
+langgraph-checkpoint-postgres
+psycopg[binary]
+langsmith
+langchain-tavily
+tavily

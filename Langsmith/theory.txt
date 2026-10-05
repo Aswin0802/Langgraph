@@ -1,0 +1,8 @@
+Observability with langsmith
+
+langsmith is a debugging,monitoring and evaluation platform for applications built with llms and ai agents.
+It can also with other frameworks also instead of langchain.
+
+![alt text](image.png)
+
+

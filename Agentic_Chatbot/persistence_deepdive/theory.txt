@@ -1,0 +1,93 @@
+State is the data the graph currently knows/holds during execution, and it is updated as nodes execute.
+
+Checkpoint is a snapshot of the graph's state at a particular point during execution.
+
+Checkpointer is responsible for storing and retrieving those checkpoints.
+
+thread_id identifies a particular execution thread/conversation. LangGraph uses it to retrieve the checkpoint history for that thread and continue execution from the latest checkpointed state.
+
+LangGraph persists graph state through checkpoints. The exact state persisted depends on what you put in your graph's state.
+
+
+A checkpoint is a snapshot created at a particular point in the graph's execution, commonly after a node/state update. Depending on the graph/checkpointer and execution lifecycle, checkpoints can occur at multiple points, including before/after relevant steps.
+
+thread_id tells that checkpointer which thread's checkpoint history to retrieve.
+
+Graph execution
+       │
+       ▼
+    Node A
+       │
+       ▼
+  State updated
+       │
+       ▼
+  Checkpoint ── S1
+       │
+       ▼
+    Node B
+       │
+       ▼
+  State updated
+       │
+       ▼
+  Checkpoint ── S2
+       │
+       ▼
+    Node C
+       │
+       ▼
+  State updated
+       │
+       ▼
+  Checkpoint ── S3
+
+
+  thread_id
+   ↓
+Checkpointer looks up checkpoints belonging to that thread
+   ↓
+Finds the latest checkpoint
+   ↓
+Loads its saved state
+   ↓
+Graph continues execution from that state
+   ↓
+New state is produced
+   ↓
+New checkpoint is saved for the same thread_id
+
+
+                 CHECKPOINTER
+              (storage system)
+                     │
+        ┌────────────┼────────────┐
+        │            │            │
+    thread_id     thread_id    thread_id
+    "chat_1"      "chat_2"      "chat_3"
+        │            │            │
+        ▼            ▼            ▼
+   checkpoints   checkpoints   checkpoints
+        │
+        ├── checkpoint 1 → state S1
+        ├── checkpoint 2 → state S2
+        └── checkpoint 3 → state S3
+
+Entire Gist:-
+thread_id acts as an identifier that tells the checkpointer which thread's checkpoint history to access. The checkpointer retrieves the latest saved checkpoint/state for that thread. That state is used as the starting state for the new graph execution, along with the new input. The graph executes and produces an updated state, which is then saved as a new checkpoint belonging to the same thread.
+
+
+Edge connection in a graph are super steps.
+
+get_state returns the latest state snapshot
+get_state_history returns all the states including the intermediate states.
+
+
+Benefit of Persistence:-
+Short term memory
+fault tolerance
+HITL
+time travel
+update state
+
+

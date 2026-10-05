@@ -1,0 +1,2 @@
+Here we need conditional edges which will take the edge where we need to start conditional operation and another is the condition function
+

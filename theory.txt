@@ -1,0 +1,51 @@
+Problems we face while building complex systems using langchain:-
+Loops
+COnditional branching
+Jumps
+Scheduling
+handling states langchain is stateless and langgraph is statefull
+
+event driven execution:-
+pause and trigger option
+
+fault tolerance:-
+small faults:- in between the workflow
+big faults:- Software Crash
+
+HITL:- Human in the Loop
+
+Nested workflows
+
+Observability
+
+langgraph is an orchestration framework for building event-driven,stateful,multi step workflows.
+it models the logic as a graph of nodes and edges instead of a linear chain.
+langgraph automatically resume after the problem is solved instead of starting it from the beginning.
+
+
+Core components of langgraph:-
+
+1.  LLM Workflows:-
+prompt chaining
+routing
+parallelism
+orchestrator 
+evaluator optimizer
+
+2. states nodes and edges
+
+3. State:-
+it is the shared memory that flows through your workflow.
+it holds all the data and update the states moving between the nodes.
+We can build it using pydantic and typeddict
+
+4.Reducers:-
+it defines how updates from nodes can be applied to the shared state.
+it can replace,add or merge.
+
+Langgraph execution model:-
+First we build a graph.
+Compile it using .Compile method
+invoke it using .invoke method input will be the given to the root of the graph
+when everything will be finished it reaches halting condition.
+
