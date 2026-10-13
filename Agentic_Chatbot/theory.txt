@@ -21,3 +21,13 @@ it route the request to the correct and return the response to the llm.
 
 tools_condition:- to use tools or not
 tool node:- route to the correct tool and return the response.
+
+
+Common hitl patterns:-
+approve reject edit
+
+action approval pattern
+output review/edit pattern
+ambiguity classification pattern
+escalation pattern
+

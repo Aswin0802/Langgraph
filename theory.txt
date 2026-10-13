@@ -49,3 +49,13 @@ Compile it using .Compile method
 invoke it using .invoke method input will be the given to the root of the graph
 when everything will be finished it reaches halting condition.
 
+
+
+different cicd tools:-
+github actions
+jenkins
+circle ci
+
+ci means continuous integration
+cd means continuous development
+
